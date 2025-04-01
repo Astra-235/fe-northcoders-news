@@ -4,12 +4,45 @@
   padding: 2rem;
   text-align: center;
 }
+.frame {
+  width: 100%;
+  height: 100%;
+  min-width: 600px;
+  border: rgb(0, 0, 0) 3px solid;
+  background-color: rgba(212, 123, 14, 0.349);
+}
+
+
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  border: rgb(0, 0, 0) 3px solid;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color:rgba(212, 123, 14, 0.349);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  border: rgb(0, 0, 0) 3px solid;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: rgba(212, 123, 14, 0.349);
+}
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 4em;
   will-change: filter;
   transition: filter 300ms;
+  border: rgb(0, 0, 0) 1px solid;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -18,25 +51,153 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-icon {
+  height: 4em;
+  will-change: filter;
+  transition: filter 300ms;
+  border: rgb(0, 0, 0) 1px solid;
+}
+.login-icon:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.login-icon.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.main-section {
+  box-sizing: content-box;
+  border: rgb(0, 0, 0) 3px solid;
+  margin: 0.5em;
+  background-color: rgba(212, 123, 14, 0.349); 
+  padding:1em;
+  
 }
 
-.card {
-  padding: 2em;
+.articles {
+
+  box-sizing: border-box;
+  background-color: rgba(212, 123, 14, 0.349);
+  padding: 1em;
+  border: rgb(0, 0, 0) 3px solid;
+
+
+
+  
 }
 
-.read-the-docs {
-  color: #888;
+
+
+.article {
+
+    display: grid;
+    padding: 1rem;
+    margin: 1rem;
+    border: rgb(0, 0, 0) 2px solid;
+    width:90%;
+    height: 25em;
+    background-color: rgba(255, 255, 255, 0.349);
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    grid-template-areas: 
+    "a a a b b b b b b k k"
+    "a a a c c c c d d d d"
+    "a a a . . . . . . . ."
+    "e e e e e e e e e e e"
+    "e e e e e e e e e e e"
+    "e e e e e e e e e e e"
+    ". . . . . . . . . . ."
+    "f f f . . . . . i i i"
+    "g g g h h h . . j j j"
+
+
 }
+
+.article-img{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: a;
+  width: 8.6rem;
+  height: 8.6rem;
+  margin: 0.2rem
+
+}
+.article-title{
+  
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: b;
+  width: 28.4rem;
+  height: 4rem;
+  margin: 0.2rem
+}
+.article-author{
+  
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: c;
+  width: 16rem;
+  height: 4rem;
+  margin: 0.2rem
+}
+
+.article-date {
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: d;
+  width: 16rem;
+  height: 4rem;
+  margin: 0.2rem
+}
+
+.article-topic {
+  
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: k;
+  width: 6.3rem;
+  height: 4rem;
+  margin: 0.2rem
+}
+.article-comment-count{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: f;
+}
+.article-votes{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: i;
+}
+
+.article-show-comments-button{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: g;
+}
+
+.article-post-comments-button{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: h;
+
+}
+
+.article-vote-button {
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: j;
+}
+
+
+
+
+
+
+
+
+
+
+.articles-list {
+
+  list-style-type: none;
+  padding: 0em;
+  margin: 0em;
+}
+
+
+
+
+
+  
