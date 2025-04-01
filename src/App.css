@@ -87,7 +87,7 @@
 
 
 
-.article {
+.article-full-view {
 
     display: grid;
     padding: 1rem;
@@ -112,6 +112,33 @@
     "g g g h h h . . j j j"
 
 
+}
+
+.article-short-view {
+
+  display: grid;
+  padding: 1rem;
+  margin: 1rem;
+  border: rgb(0, 0, 0) 2px solid;
+  width:90%;
+  height: 18em;
+  background-color: rgba(255, 255, 255, 0.349);
+
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  grid-template-areas: 
+  "a a a b b b b b b k k"
+  "a a a c c c c d d d d"
+  "a a a . . . . . . . .";
+
+}
+
+.article-short-view:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.article-short-view.react:hover{
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 .article-img{

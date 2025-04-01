@@ -1,9 +1,10 @@
 import {getArticles} from './api.js'
 import {useState, useEffect} from 'react'
 import {Article} from './Article'
+import {Link} from 'react-router-dom'
 
 
-const Articles = () => {
+const Articles = ({setCurrentArticle}) => {
 
     const [articles, setArticles] = useState([])
 
@@ -11,16 +12,30 @@ const Articles = () => {
     getArticles()
     .then(({articles})=>{
     setArticles(articles)
+  
     })
     }, [])
 
+   const selectArticle = (article) => {
+      //  e.preventDefault();
 
+      setCurrentArticle(article)
+    
+   }
 
     return (
         <div className='articles'>
-            <ul className='articles-list'>
+        <ul className='articles-list'>
         {articles.map((article) => {
-            return <li><Article article={article} /></li>
+            
+            return (
+        
+            <li  key={article.article_id} value={article.article_id} onClick={(e)=>{selectArticle(article)}}>
+            <Link to='./article'>
+                <Article article={article} articleViewType='article-short-form'/>
+            </Link>
+            </li>
+            )
         })}
         </ul>
         </div>
