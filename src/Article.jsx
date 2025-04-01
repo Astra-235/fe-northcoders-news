@@ -5,8 +5,7 @@ import {parseDate} from './utils'
 
 const Article = ({article, articleViewType}) => {
 
-    
-console.log(article.body, '<--- in Article')
+
 
     return (
         <div className={articleViewType}>
@@ -16,7 +15,7 @@ console.log(article.body, '<--- in Article')
                 <p className='article-author'>by: {article.author}</p>
                 <p className='article-date'>posted on: {parseDate(article.created_at)}</p>
                <p className='article-topic'>Topic: {article.topic}</p>
-               <p className='article-body'>{article.body}</p>
+               <div className='article-body'>{article.body}</div>
 
                  <p className='article-comment-count'>Comment count: {article.comment_count}</p>
              <p className='article-votes'>Vote count: {article.votes}</p>

@@ -16,14 +16,14 @@ const Articles = ({ setCurrentArticle }) => {
 
 
   const selectArticle = (article) => {
-    //  e.preventDefault();
     getFullArticle(article.article_id)
     .then(({articles : fullArticle}) => {
-        setCurrentArticle(fullArticle);
+        setCurrentArticle(fullArticle)
+
     });
-  };
 
 
+  }
 
   return (
     <div className="articles">
@@ -49,6 +49,5 @@ const Articles = ({ setCurrentArticle }) => {
       </ul>
     </div>
   );
-};
-
+  }
 export { Articles };
