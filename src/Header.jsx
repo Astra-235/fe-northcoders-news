@@ -1,5 +1,6 @@
 import ncIcon from "./assets/NC-Logo.jpg"
 import loginIcon from "./assets/Login-Icon.jpg"
+import {Link} from 'react-router-dom'
 
 
 const Header = () => {
@@ -7,7 +8,11 @@ const Header = () => {
 
     return (
         <div className='header-bar'>
-        <img src={ncIcon} className="logo" alt="NC News Homepage" />
+
+       <Link to='./'>
+       <img src={ncIcon} className="logo" alt="NC News Homepage" />
+       </Link>
+
         <img src={loginIcon} className="login-icon" alt="Login" />
         </div>
     )
@@ -16,7 +21,3 @@ const Header = () => {
 
 export {Header}
 
-
-
-        // <a href="https://react.dev" target="_blank">
-        //   <img src={reactLogo} className="logo" alt="React logo" />
