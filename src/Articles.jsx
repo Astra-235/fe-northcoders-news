@@ -4,40 +4,24 @@ import { Article } from "./Article";
 import { Link } from "react-router-dom";
 import { getFullArticle } from "./api";
 
-const Articles = ({ setCurrentArticle }) => {
+const Articles = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    getArticles().then(({ articles }) => {
+    getArticles()
+    .then(({ articles }) => {
       setArticles(articles);
     });
   }, []);
 
-
-
-  const selectArticle = (article) => {
-    getFullArticle(article.article_id)
-    .then(({articles : fullArticle}) => {
-        setCurrentArticle(fullArticle)
-
-    });
-
-
-  }
 
   return (
     <div className="articles">
       <ul className="articles-list">
         {articles.map((article) => {
           return (
-            <li
-              key={article.article_id}
-              value={article.article_id}
-              onClick={(e) => {
-                selectArticle(article);
-              }}
-            >
-              <Link to="./article">
+            <li>
+              <Link to={`/view-article-${article.article_id}`}>
                 <Article
                   article={article}
                   articleViewType="article-short-form"
@@ -49,5 +33,6 @@ const Articles = ({ setCurrentArticle }) => {
       </ul>
     </div>
   );
-  }
+}
+
 export { Articles };

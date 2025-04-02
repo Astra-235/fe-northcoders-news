@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, React } from 'react'
+import {  useSearchParams, useLocation } from "react-router-dom"
 import {Header} from './Header'
 import {Navbar} from './Navbar'
 import {Articles} from './Articles'
@@ -8,7 +9,13 @@ import './App.css'
 import {Routes, Route, Link} from 'react-router-dom'
 
 function App() {
-  const [currentArticle, setCurrentArticle] = useState({})
+
+  //const queryParameters = new URLSearchParams(location.search)   <<--- to be used when implementing sort_by and order_by
+
+  const location = useLocation().pathname
+  const regexForString = /^\/view-article-/
+  const regexForNumber = /\/view-article-([0-9]+)/g;
+  const searchedForArticleID = regexForString.test(location) ? regexForNumber.exec(location)[1] : '/';
 
 
   return (
@@ -20,8 +27,8 @@ function App() {
       <div className="main-section">
      
       <Routes>
-       <Route path='/' element={<Articles setCurrentArticle={setCurrentArticle} />} />
-       <Route path='/article' element={<Article articleViewType='article-long-form' article={currentArticle}/> }/>
+       <Route path='/' element={<Articles />} />
+       <Route path={`/view-article-${searchedForArticleID}`} element={<Article articleViewType='article-long-form' article_id={searchedForArticleID}/> }/>
       </Routes> 
       
       </div>
@@ -30,3 +37,4 @@ function App() {
 }
 
 export default App
+
