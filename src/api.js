@@ -11,8 +11,16 @@ const getArticles = () => {
     .then(({data}) => {
         return data
     })
-
 }
 
-export {getArticles}
+const getFullArticle = (article_id) => {
+    const URL = `/articles/${article_id}`
+    return api.get(URL)
+    .then(({data}) => {
+        return data
+    })
+}
+
+
+export {getArticles, getFullArticle}
 
