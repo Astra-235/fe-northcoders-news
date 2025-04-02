@@ -22,7 +22,7 @@ const getFullArticle = (article_id) => {
 }
 
 
-const getComments = (article_id) => {
+const getComments = ({article_id}) => {
     const URL = `/articles/${article_id}/comments`
     return api.get(URL)
     .then(({data}) => {

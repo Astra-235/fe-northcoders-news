@@ -7,15 +7,15 @@ const Navbar = () => {
     return (
         <div className='nav-bar'>
             <div>
-                <p>sort by</p>
+                <p>Sort articles by</p>
             </div>
                 
             <div>
-                <p>order by</p>
+                <p>Order articles by</p>
             </div>
 
             <div>
-                 <p>Topics</p>
+                 <p>Browse Topics</p>
             </div>
 
             <div>
@@ -27,4 +27,3 @@ const Navbar = () => {
 }
 
 export { Navbar }
-
