@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import { parseDate } from './utils'
 import { getFullArticle, patchArticleVotes } from "./api";
 import { Comments } from "./Comments";
+import { NewComment } from "./NewComment";
 import { Modal } from "./Modal";
 
 
 const Article = ({ article, article_id, articleViewType }) => {
 
+    //declaring state variables
     const [currentArticle, setCurrentArticle] = useState({})
     const [commentsOn, setCommentsOn] = useState(false)
     const [currentVotes, setCurrentVotes] = useState(0)
     const [error, setError] = useState(null)
+    const [isPostingNewComment, setIsPostingNewComment] = useState(false)
 
 
 
 
-    //entry via direct input of an article_id in the address bar
+    //entry to ARTICLE component via direct input of an article_id in the address bar
     if (article_id) {
         useEffect(() => {
             getFullArticle(article_id)
@@ -25,7 +28,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 });
         }, [])
 
-        //entry via the articles list page
+        //entry to ARTICLE component via the articles list page
     } else {
         useEffect(() => {
             setCurrentArticle(article)
@@ -34,13 +37,21 @@ const Article = ({ article, article_id, articleViewType }) => {
         }, [])
     }
 
+
+    //for controlling the comments section
     const commentsButtonText = commentsOn ? 'Hide Comments' : 'Show Comments'
-    const displayAllComments = (article_id) => {
+
+    const displayAllComments = () => {
         setCommentsOn(!commentsOn)
+    }
+    const postNewComment = () => {
+        if(commentsOn===false){setCommentsOn(true)}
+        setIsPostingNewComment(true)
     }
 
 
 
+    //for controlling votes
     const ammendVotes = (newVote) => {
         setCurrentVotes((currentVotes) => currentVotes + newVote)
         setError(null)
@@ -57,6 +68,7 @@ const Article = ({ article, article_id, articleViewType }) => {
         <div>
             <div className={articleViewType}>
 
+                {/* display the article  */}
                 <img className='article-img' src={currentArticle.article_img_url} />
                 <p className='article-title'>{currentArticle.title}</p>
                 <p className='article-author'>By: {currentArticle.author}</p>
@@ -67,7 +79,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 <p className='article-comment-count'>Comment count: {currentArticle.comment_count}</p>
 
 
-                {/* Votes: */}
+                {/* vote section */}
                 <p className='article-votes'>Vote count: {currentVotes}</p>
                 <button className='article-up-vote-button' onClick={() => { ammendVotes(1) }}>Vote +1</button> 
                 <button className='article-down-vote-button' onClick={() => { ammendVotes(-1) }}>Vote -1 </button>
@@ -76,15 +88,25 @@ const Article = ({ article, article_id, articleViewType }) => {
                         ? <div><Modal error={error} setError={setError}/></div>
                         : <div></div>
                 } 
-                {/* Comments: */}
-                <button className='article-show-comments-button' key='article-show-comments-button' value={currentArticle.article_id} onClick={() => { displayAllComments() }}>{commentsButtonText}</button>
-                <button className='article-post-comments-button'>Post comment</button>
+
+
+                {/* comments buttons */}
+                <button className='article-show-comments-button' key='article-show-comments-button' value={currentArticle.article_id} onClick={displayAllComments}>{commentsButtonText}</button>
+                <button className='article-post-comments-button' key='post-comment' onClick={postNewComment}>Post comment</button>
             </div>
 
 
+             {/* post a new comment */}
+             <div>
+                {isPostingNewComment  ? <div className='new-comment-outer'><NewComment article_id={currentArticle.article_id} /></div> : <div></div>}
+            </div>
+
+
+            {/* view existing comments */}
             <div>
-                {commentsOn & articleViewType === 'article-long-form' ? <div className='comments-list-outer'><Comments article_id={currentArticle.article_id} /></div> : <div></div>}
+                {commentsOn ? <div className='comments-list-outer'><Comments article_id={currentArticle.article_id} /></div> : <div></div>}
             </div>
+
 
         </div>
     )

@@ -10,7 +10,6 @@ const Comments = (article_id) => {
   useEffect(() => {
     getComments(article_id)
     .then(({ comments }) => {
-        console.log(comments, '<--- in Comments')
       setComments(comments);
     });
   }, []);

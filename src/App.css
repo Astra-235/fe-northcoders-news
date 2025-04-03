@@ -190,6 +190,7 @@
     text-align: center;
     align-content: center;
   }
+
   .article-comment-count{
     border: rgb(0, 0, 0) 2px solid;
     grid-area: f;
@@ -374,15 +375,29 @@
   border: rgb(233, 24, 24) 2px solid;
   font-size: large;
   font-weight: bold;
-
-
 }
-
-
 .modal-content {
   margin: 0.5rem
 }
-
 .modal-button-close {
   margin: 0.5rem
+}
+
+.new-comment-inner {
+
+  padding: 1rem;
+  margin: 1rem;
+  margin-top: 2rem;
+  border: rgb(0, 0, 0) 2px solid;
+  width: 100%;
+  background-color: rgba(212, 123, 14, 0.349);
+  list-style-type:none;
+  text-align: left;
+  height:auto;
+  display: grid;
+  grid-template-areas: 
+  "a a a a a . b b b b b"
+  "c c c c c c c c c c c"
+  "e e e . . f f f d d d";
+
 }
