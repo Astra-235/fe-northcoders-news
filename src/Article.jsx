@@ -3,7 +3,7 @@ import { parseDate } from './utils'
 import { getFullArticle, patchArticleVotes } from "./api";
 import { Comments } from "./Comments";
 import { NewComment } from "./NewComment";
-import { Modal } from "./Modal";
+import { VoteModal, SuccessfulSubmissionMessage} from "./Modal";
 
 
 const Article = ({ article, article_id, articleViewType }) => {
@@ -14,6 +14,8 @@ const Article = ({ article, article_id, articleViewType }) => {
     const [currentVotes, setCurrentVotes] = useState(0)
     const [error, setError] = useState(null)
     const [isPostingNewComment, setIsPostingNewComment] = useState(false)
+    const [submissionSuccessful, setSubmissionSuccessful] = useState(false)
+    const [commentCount, setCommentCount] = useState(false)
 
 
 
@@ -25,6 +27,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 .then(({ articles: fullArticle }) => {
                     setCurrentArticle(fullArticle)
                     setCurrentVotes(fullArticle.votes)
+                    setCommentCount(fullArticle.comment_count)
                 });
         }, [])
 
@@ -33,6 +36,7 @@ const Article = ({ article, article_id, articleViewType }) => {
         useEffect(() => {
             setCurrentArticle(article)
             setCurrentVotes(article.votes)
+            setCommentCount(article.comment_count)
 
         }, [])
     }
@@ -76,7 +80,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 <p className='article-topic'>Topic: {currentArticle.topic}</p>
                 <div className='article-body'>{currentArticle.body}</div>
 
-                <p className='article-comment-count'>Comment count: {currentArticle.comment_count}</p>
+                <p className='article-comment-count'>Comment count: {commentCount}</p>
 
 
                 {/* vote section */}
@@ -85,7 +89,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 <button className='article-down-vote-button' onClick={() => { ammendVotes(-1) }}>Vote -1 </button>
                 {
                   (error)
-                        ? <div><Modal error={error} setError={setError}/></div>
+                        ? <div><VoteModal error={error} setError={setError}/></div>
                         : <div></div>
                 } 
 
@@ -98,7 +102,7 @@ const Article = ({ article, article_id, articleViewType }) => {
 
              {/* post a new comment */}
              <div>
-                {isPostingNewComment  ? <div className='new-comment-outer'><NewComment article_id={currentArticle.article_id} setIsPostingNewComment={setIsPostingNewComment}/></div> : <div></div>}
+                {isPostingNewComment  ? <div className='new-comment-outer'><NewComment article_id={currentArticle.article_id} setIsPostingNewComment={setIsPostingNewComment}  setSubmissionSuccessful={setSubmissionSuccessful} setCommentCount={setCommentCount}/></div> : <div></div>}
             </div>
 
 
@@ -108,6 +112,7 @@ const Article = ({ article, article_id, articleViewType }) => {
                 {commentsOn ? <div className='comments-list-outer'><Comments article_id={currentArticle.article_id} /></div> : <div></div>}
             </div>
 
+            {submissionSuccessful ? <div><SuccessfulSubmissionMessage setSubmissionSuccessful={setSubmissionSuccessful}/></div> : <div></div>}
 
         </div>
     )
@@ -115,3 +120,5 @@ const Article = ({ article, article_id, articleViewType }) => {
 }
 
 export { Article }
+
+

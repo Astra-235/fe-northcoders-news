@@ -39,8 +39,22 @@ const patchArticleVotes = (article_id, votes) => {
     })
 }
 
+const postNewCommit = (article_id, newComment) => {
+    const requestObject = {
+        username: "jessjelly",
+        body: newComment,
+      }
+    const URL = `/articles/${article_id}/comments`
+    return api.post(URL, requestObject)
+    .then(({data}) => {
+        return data
+    })
+
+    
+}
 
 
 
-export {getArticles, getFullArticle, getComments, patchArticleVotes}
+
+export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewCommit}
 
