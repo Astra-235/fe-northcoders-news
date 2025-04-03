@@ -30,7 +30,17 @@ const getComments = ({article_id}) => {
     })
 }
 
+const patchArticleVotes = (article_id, votes) => {
+    const requestObject = {inc_votes: votes}
+    const URL = `/articles/${article_id}`
+    return api.patch(URL, requestObject)
+    .then(({data}) => {
+        return data
+    })
+}
 
 
-export {getArticles, getFullArticle, getComments}
+
+
+export {getArticles, getFullArticle, getComments, patchArticleVotes}
 
