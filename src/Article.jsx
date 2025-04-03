@@ -1,35 +1,54 @@
 import {useState, useEffect} from 'react'
 import {parseDate} from './utils'
-import { getFullArticle} from "./api";
-import { Comments } from "./Comments";
+import {getFullArticle, patchArticleVotes} from "./api";
+import {Comments} from "./Comments";
 
 
 const Article = ({article, article_id, articleViewType}) => {
     
     const [currentArticle, setCurrentArticle] = useState({})
     const [commentsOn, setCommentsOn] = useState(false)
-    // const [comments, setComments] = useState([])
+    const [currentVotes, setCurrentVotes] = useState(0)
+    const [error, setError] = useState(null)
 
-    const commentsButtonText = commentsOn? 'Hide Comments' : 'Show Comments'
 
 
+    //entry via direct input of an article_id in the address bar
     if(article_id){
     useEffect(()=>{
         getFullArticle(article_id)
         .then(({articles : fullArticle}) => {
             setCurrentArticle(fullArticle)
+            setCurrentVotes(fullArticle.votes)
         });
     }, [])
+
+    //entry via the articles list page
     } else {
         useEffect(()=>{
             setCurrentArticle(article)
+            setCurrentVotes(article.votes)
+
         }, [])
     }
 
-
+ const commentsButtonText = commentsOn? 'Hide Comments' : 'Show Comments'
  const displayAllComments = (article_id) => {
              setCommentsOn(!commentsOn)
          }
+
+
+
+const ammendVotes = (newVote) => {
+    setCurrentVotes((currentVotes) => currentVotes + newVote)
+    setError('The vote count failed to update.  Please try again.') //<---- change this back to null
+    patchArticleVotes(currentArticle.article_id, newVote)
+    .catch((err)=>{
+        setCurrentVotes((currentVotes) => currentVotes - newVote)
+        setError('The vote count failed to update.  Please try again.')
+    })
+
+}
 
 
 
@@ -45,11 +64,19 @@ const Article = ({article, article_id, articleViewType}) => {
                <div className='article-body'>{currentArticle.body}</div>
 
                  <p className='article-comment-count'>Comment count: {currentArticle.comment_count}</p>
-             <p className='article-votes'>Vote count: {currentArticle.votes}</p>
+             
+             {/* Votes: */}
+             <p className='article-votes'>Vote count: {currentVotes}</p>
+             <button className='article-up-vote-button' onClick={()=>{ammendVotes(1)}}>Vote +1</button>
+             <button className='article-down-vote-button' onClick={()=>{ammendVotes(-1)}}>Vote -1 </button>
+             {error ? <p className='vote-error-message' >{error}</p> : null}
+        
 
+            {/* Comments: */}
             <button className='article-show-comments-button' key='article-show-comments-button' value={currentArticle.article_id} onClick={()=>{displayAllComments()}}>{commentsButtonText}</button>
             <button className='article-post-comments-button'>Post comment</button>
-            <button className='article-vote-button'>Vote</button>
+
+           
 
             
         </div>
