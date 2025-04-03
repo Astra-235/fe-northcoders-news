@@ -9,14 +9,20 @@ const NewComment = ({ article_id, setIsPostingNewComment }) => {
         setNewComment('')
     }
 
+    const submitComment = () => {
+        setIsPostingNewComment(false)
+        setNewComment('')
+    }
+
     return (
 
 
         <div className='new-comment-inner'>
 
 
-            <input name="new-comment-content" value='enter comment here...'/>
-            <button className='comment-cancel-button' onClick={cancelComment}>Cancel Comment</button>
+            <input className="new-comment-content" value='enter comment here...'/>
+            <button className='new-comment-cancel-button' onClick={cancelComment}>Cancel Comment</button>
+            <button className='new-comment-submit-button' onClick={submitComment}>Submit Comment</button>
 
 
         </div>
