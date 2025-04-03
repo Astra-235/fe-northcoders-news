@@ -401,3 +401,8 @@
   "e e e . . f f f d d d";
 
 }
+
+#post-comment-button-off {
+  background-color: rgba(185, 181, 181, 0.349);
+  font-style: oblique;
+}

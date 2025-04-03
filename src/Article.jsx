@@ -39,13 +39,13 @@ const Article = ({ article, article_id, articleViewType }) => {
 
 
     //for controlling the comments section
-    const commentsButtonText = commentsOn ? 'Hide Comments' : 'Show Comments'
+    const allCommentsButtonText = commentsOn ? 'Hide Comments' : 'Show Comments'
+    const newCommentButtonStyle = isPostingNewComment ? 'post-comment-button-off' : 'post-comment-button-on'
 
     const displayAllComments = () => {
         setCommentsOn(!commentsOn)
     }
     const postNewComment = () => {
-        if(commentsOn===false){setCommentsOn(true)}
         setIsPostingNewComment(true)
     }
 
@@ -91,15 +91,16 @@ const Article = ({ article, article_id, articleViewType }) => {
 
 
                 {/* comments buttons */}
-                <button className='article-show-comments-button' key='article-show-comments-button' value={currentArticle.article_id} onClick={displayAllComments}>{commentsButtonText}</button>
-                <button className='article-post-comments-button' key='post-comment' onClick={postNewComment}>Post comment</button>
+                <button className='article-show-comments-button' key='article-show-comments-button' value={currentArticle.article_id} onClick={displayAllComments}>{allCommentsButtonText}</button>
+                <button className='article-post-comments-button' id={newCommentButtonStyle} key='post-comment' onClick={postNewComment}>Post comment</button>
             </div>
 
 
              {/* post a new comment */}
              <div>
-                {isPostingNewComment  ? <div className='new-comment-outer'><NewComment article_id={currentArticle.article_id} /></div> : <div></div>}
+                {isPostingNewComment  ? <div className='new-comment-outer'><NewComment article_id={currentArticle.article_id} setIsPostingNewComment={setIsPostingNewComment}/></div> : <div></div>}
             </div>
+
 
 
             {/* view existing comments */}
