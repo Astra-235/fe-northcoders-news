@@ -85,7 +85,7 @@
       "a a a c c c c d d d d"
       "e e e e e e e e e e e"
       "e e e e e e e e e e e"
-      "f f f . m m m m i i i"
+      "f f f . . . m m i i i"
       "g g g h h h . j j l l";
   
       vertical-align: top;
@@ -231,15 +231,14 @@
     align-items: center;
   }
 
-/* .vote-error-message {
+.vote-error-message {
   border: rgb(0, 0, 0) 2px solid;
-  width: 20rem;
-  height: 3rem;
+  width: 11.0rem;
+  height: 4rem;
   align-items: center;
   grid-area: m;
   background-color: rgb(255, 255, 255);
-  margin: 0.5rem;
-} */
+}
 
 
 
@@ -277,16 +276,6 @@
   } 
 
  
-
- /* .comments-list-inner {
-    
-    
-}   */
-/* 
-.comments-list {
-    display: inline-block;
-   
-}   */
 
 .comments-list-item {
 
@@ -368,4 +357,32 @@
     width: 12rem;
     padding: 0.5rem;
     margin: 0.5rem;
+}
+
+
+
+.modal-container {
+
+  position: fixed;
+  bottom: 2rem;
+  height: 3rem;
+  width: 35rem;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  border: rgb(233, 24, 24) 2px solid;
+  font-size: large;
+  font-weight: bold;
+
+
+}
+
+
+.modal-content {
+  margin: 0.5rem
+}
+
+.modal-button-close {
+  margin: 0.5rem
 }
