@@ -39,11 +39,12 @@ const patchArticleVotes = (article_id, votes) => {
     })
 }
 
-const postNewCommit = (article_id, newComment) => {
+const postNewComment = (article_id, username, newComment) => {
     const requestObject = {
-        username: "jessjelly",
+        username: username,
         body: newComment,
       }
+      console.log(requestObject, '<---in api')
     const URL = `/articles/${article_id}/comments`
     return api.post(URL, requestObject)
     .then(({data}) => {
@@ -56,5 +57,5 @@ const postNewCommit = (article_id, newComment) => {
 
 
 
-export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewCommit}
+export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewComment}
 
