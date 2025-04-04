@@ -11,6 +11,7 @@ const getArticles = () => {
     .then(({data}) => {
         return data
     })
+
 }
 
 const getFullArticle = (article_id) => {
@@ -19,15 +20,17 @@ const getFullArticle = (article_id) => {
     .then(({data}) => {
         return data
     })
+
 }
 
 
-const getComments = ({article_id}) => {
+const getComments = (article_id) => {
     const URL = `/articles/${article_id}/comments`
     return api.get(URL)
     .then(({data}) => {
         return data
     })
+
 }
 
 const patchArticleVotes = (article_id, votes) => {
@@ -37,6 +40,7 @@ const patchArticleVotes = (article_id, votes) => {
     .then(({data}) => {
         return data
     })
+
 }
 
 const postNewComment = (article_id, username, newComment) => {
@@ -44,18 +48,25 @@ const postNewComment = (article_id, username, newComment) => {
         username: username,
         body: newComment,
       }
-      console.log(requestObject, '<---in api')
     const URL = `/articles/${article_id}/comments`
     return api.post(URL, requestObject)
     .then(({data}) => {
         return data
     })
+   
+}
 
-    
+
+const removeComment = (comment_id) => {
+    const URL = `/comments/${comment_id}`
+    return api.delete(URL)
+    .then(({data}) => {
+        return data
+    })
+
 }
 
 
 
-
-export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewComment}
+export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewComment, removeComment}
 

@@ -28,18 +28,16 @@ const NewComment = ({ article_id, setIsPostingNewComment, setSubmissionSuccessfu
             setNewComment('')
             setSubmissionSuccessful(true)
             setIsPostingNewComment(false)
+        })
         .catch((err)=>{
             setAwaitingResponse(false)
             setSubmissionFailed(true)
             setCommentCount((commentCount) => Number(commentCount) - 1)
-            
-        })            
-
-
-        })
+        })              
 
     }
 
+    
     const updateNewComment = (e) => {
         setNewComment(e.target.value)
     }

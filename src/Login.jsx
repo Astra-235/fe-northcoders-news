@@ -11,6 +11,7 @@ const Login = () => {
     const { username, setUsername } = useContext(UserContext);
     const [ usernameInput, setUsernameInput ] = useState('')
 
+
   const inputUsername = (e) => {
     setUsernameInput(e.target.value)
     }
@@ -33,7 +34,7 @@ return (
 
      <div>
      <label>
-     Username: <input className="user-name-input" onChange={inputUsername} />
+     Username: <input className="user-name-input"  onChange={inputUsername} />
      </label>
      <br></br>
      <button onClick={switchUser}>Change to a different user</button>
