@@ -13,9 +13,13 @@ const Header = () => {
        <img src={ncIcon} className="logo" alt="NC News Homepage" />
        </Link>
 
-        <img src={loginIcon} className="login-icon" alt="Login" />
+
+    <Link to='./Login'>
+        <img src={loginIcon} className="login-icon" alt="User Login" />
+    </Link>
+   
         </div>
-    )
+)
 
 }
 
