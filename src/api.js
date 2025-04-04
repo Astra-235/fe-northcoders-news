@@ -11,7 +11,6 @@ const getArticles = () => {
     .then(({data}) => {
         return data
     })
-
 }
 
 const getFullArticle = (article_id) => {
@@ -63,10 +62,17 @@ const removeComment = (comment_id) => {
     .then(({data}) => {
         return data
     })
+}
 
+
+const getTopics = () => {
+    return api.get('/topics')
+    .then(({data}) => {
+        return data
+    })
 }
 
 
 
-export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewComment, removeComment}
+export {getArticles, getFullArticle, getComments, patchArticleVotes, postNewComment, removeComment, getTopics}
 

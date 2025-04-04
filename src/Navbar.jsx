@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 
 
 
@@ -14,9 +15,11 @@ const Navbar = () => {
                 <p>Order articles by</p>
             </div>
 
+            <Link to='./topics'>
             <div>
                  <p>Browse Topics</p>
             </div>
+            </Link>
 
             <div>
                 <p>Search</p>

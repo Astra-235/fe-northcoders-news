@@ -309,13 +309,7 @@
 
 }
 
-.comments-list-inner {
 
-}
-
-.comments-list {
-  
-}
 
 
 
@@ -529,4 +523,78 @@ justify-content: space-between;
 }
 
 
+
+.topics-page{
+  display: grid;
+  padding: 2rem;
+  margin: 1rem;
+  border: rgb(0, 0, 0) 2px solid;
+  width: 50em;
+  min-height: 40em;
+}
+.topics-heading{
+  border: rgb(0, 0, 0) 2px solid;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+
+  padding: 1rem;
+  margin: 1rem;
+  margin-top: 2rem;
+
+}
+.topics-list{
+  list-style-type: none;
+  width:100%;
+  padding: 0em;
+  margin: 0em;
+}
+.topics-list-item{
+  border: rgb(0, 0, 0) 2px solid;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  grid-template-areas:
+    "a a a"
+    "b b b"
+    ". . c";
+
+    padding:0.5rem;
+    margin: 0.5rem;
+
+
+
+  color: rgb(0, 0, 0);
+
+}
+.topics-list-item-name{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: a;
+  width: 28.4rem;
+  height: 4rem;
+  margin: 0.2rem;
+  text-align: center;
+  align-content: center;
+  font-weight: bold;
+}
+.topics-list-item-description{
+  border: rgb(0, 0, 0) 2px solid;
+  grid-area: b;
+  width: 28.4rem;
+  height: 4rem;
+  margin: 0.2rem;
+  text-align: center;
+  align-content: center;
+  font-weight: bold;
+}
+.topics-list-item-button{
+  grid-area: c;
+  border: rgb(0, 0, 0) 2px solid;
+  height: 2.5rem;
+  width: 12rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
 
