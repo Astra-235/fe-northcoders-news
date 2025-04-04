@@ -109,7 +109,7 @@ const Article = ({ article, article_id, articleViewType }) => {
 
             {/* view existing comments */}
             <div>
-                {commentsOn ? <div className='comments-list-outer'><Comments article_id={currentArticle.article_id} /></div> : <div></div>}
+                {commentsOn ? <div className='comments-list-outer'><Comments article_id={currentArticle.article_id} setCommentCount={setCommentCount} /></div> : <div></div>}
             </div>
 
             {submissionSuccessful ? <div><SuccessfulSubmissionMessage setSubmissionSuccessful={setSubmissionSuccessful}/></div> : <div></div>}

@@ -342,6 +342,30 @@
 
 }
 
+.comments-list-item-deleted {
+  padding: 1rem;
+  margin: 1rem;
+  margin-top: 2rem;
+  border: rgb(255, 0, 0) 2px solid;
+  width: 100%;
+  background-color: rgba(252, 207, 153, 0.24);
+  list-style-type:none;
+  text-align: left;
+  height:auto;
+  display: grid;
+  grid-template-areas:
+    "a a a a a . b b b b b"
+    "c c c c c c c c c c c"
+    "e e e . . f f f d d d";
+
+
+
+  color: rgb(211, 162, 162);
+
+}
+
+
+
 .comment-body {
 
   border: rgb(0, 0, 0) 2px solid;
@@ -400,6 +424,25 @@
   padding: 0.5rem;
   margin: 0.5rem;
 }
+
+.comment-delete-hidden-button {
+
+
+  border:rgb(223, 4, 4 2px) solid;
+  grid-area: e;
+  align-items: center;
+  height: 2.5rem;
+  width: 12rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  visibility: hidden;
+  background-color: rgb(97, 57, 5);
+
+
+
+}
+
+
 
 
 
