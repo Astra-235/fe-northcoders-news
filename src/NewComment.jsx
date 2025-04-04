@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { postNewCommit }  from "./api"
+import { useContext, useState } from "react";
+import { postNewComment }  from "./api"
 import {FailedSubmissionMessage} from './Modal'
+import { UserContext } from "./context/UserContext";
 
 
 const NewComment = ({ article_id, setIsPostingNewComment, setSubmissionSuccessful, setCommentCount }) => {
 
+
     const [newComment, setNewComment] = useState('')
     const [awaitingResponse, setAwaitingResponse] = useState(false)
     const [submissionFailed, setSubmissionFailed] = useState(false)
+    const {username} = useContext(UserContext)
    
 
     const cancelComment = () => {
@@ -19,7 +22,7 @@ const NewComment = ({ article_id, setIsPostingNewComment, setSubmissionSuccessfu
         setSubmissionFailed(false)
         setAwaitingResponse(true)
         setCommentCount((commentCount) => Number(commentCount) + 1)
-        postNewCommit(article_id, newComment)
+        postNewComment(article_id, username, newComment)
         .then((data)=>{
             setAwaitingResponse(false)
             setNewComment('')
