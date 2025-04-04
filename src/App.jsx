@@ -4,6 +4,7 @@ import {Header} from './Header'
 import {Navbar} from './Navbar'
 import {Articles} from './Articles'
 import {Article} from './Article'
+import {Login} from './Login'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {Routes, Route, Link} from 'react-router-dom'
@@ -29,7 +30,9 @@ function App() {
       <Routes>
        <Route path='/' element={<Articles />} />
        <Route path={`/view-article-${searchedForArticleID}`} element={<Article articleViewType='article-long-form' article_id={searchedForArticleID}/> }/>
-      </Routes> 
+       <Route path='/login' element={<Login />} />
+      </Routes>
+     
       
       </div>
     </div>

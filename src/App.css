@@ -10,7 +10,6 @@
   height: 100%;
   min-width: 600px;
   border: rgb(0, 0, 0) 3px solid;
-  background-color: rgba(212, 123, 14, 0.349);
 
 }
 
@@ -25,7 +24,7 @@
   border: rgb(0, 0, 0) 3px solid;
   padding: 0.5em;
   margin: 0.5em;
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color: rgba(252, 207, 153, 0.24);
 }
 
 .nav-bar {
@@ -37,8 +36,20 @@
   border: rgb(0, 0, 0) 3px solid;
   padding: 0.5em;
   margin: 0.5em;
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color:rgba(252, 207, 153, 0.24);
 }
+
+.Login-page {
+
+  background-color:rgba(252, 207, 153, 0.24);
+  display: grid;
+  padding: 2rem;
+  margin: 1rem;
+  border: rgb(0, 0, 0) 2px solid;
+  width: 50em;
+  min-height: 40em;
+}
+
 
 .logo {
   height: 4em;
@@ -84,7 +95,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 5em 5em 1fr 1fr 5em 5em;
 
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color: rgba(252, 207, 153, 0.24);
   grid-template-areas:
     "a a a b b b b b b k k"
     "a a a c c c c d d d d"
@@ -104,7 +115,7 @@
   border: rgb(0, 0, 0) 2px solid;
   width: 50em;
   height: 12em;
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color: rgba(252, 207, 153, 0.24);
 
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 5em 5em 5em;
@@ -315,7 +326,7 @@
   margin-top: 2rem;
   border: rgb(0, 0, 0) 2px solid;
   width: 100%;
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color: rgba(252, 207, 153, 0.24);
   list-style-type:none;
   text-align: left;
   height:auto;
@@ -427,11 +438,11 @@ justify-content: space-between;
 
   padding: 2rem;
   margin: auto;
-  border: rgb(0, 0, 0) 2px solid;
+  border: rgb(0, 0, 0) 0.3rem solid;
   width: 80%;
   min-height: 10em;
   margin-top: 2rem;
-  background-color: rgba(212, 123, 14, 0.349);
+  background-color:rgba(252, 207, 153, 0.24);
   justify-items:center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
